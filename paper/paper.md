@@ -53,7 +53,7 @@ interactions.  Colloid coarse-grained models are sought which utilize
 separation in scales, such as the contrast in size with the solvent and
 dynamical time-scales.  In these circumstances, coarse-grained models aim to
 capture the effective colloidal interactions and their dynamics.
-![Some test text here.](fig/data_driven_modeling2.png){ width=50% }
+![Some test text here.](fig/data_driven_modeling2.png){ width=80% }
 
 
 <p align="center">
