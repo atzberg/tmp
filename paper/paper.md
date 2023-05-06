@@ -57,7 +57,7 @@ capture the effective colloidal interactions and their dynamics.
 
 
 <p align="center">
-<img src="./fig/data_driven_modeling2.png" width="50%">
+<img src="fig/data_driven_modeling2.png" width="50%">
 </p>
 <p align="left">
 <em>
@@ -149,7 +149,7 @@ operation and source for pre-trained models and other information, see the
 schematic in Figure 2.
 
 <p align="center">
-<img src="./fig/mlmod_schematic3.png" width="35%">
+<img src="fig/mlmod_schematic3.png" width="35%">
 </p>
 <p align="left">
 <em>
