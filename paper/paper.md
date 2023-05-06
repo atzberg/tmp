@@ -54,9 +54,7 @@ separation in scales, such as the contrast in size with the solvent and
 dynamical time-scales.  In these circumstances, coarse-grained models aim to
 capture the effective colloidal interactions and their dynamics.
 <p align="center">
-<center>
 <img src="./fig/data_driven_modeling2.png" width="50%">
-</center>
 </p>
 <p align="left">
 <em>
@@ -148,9 +146,7 @@ operation and source for pre-trained models and other information, see the
 schematic in Figure 2.
 
 <p align="center">
-<center>
 <img src="./fig/mlmod_schematic3.png" width="35%">
-</center>
 </p>
 <p align="left">
 <em>
