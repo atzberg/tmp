@@ -142,7 +142,7 @@ schematic in Figure 2.
 for providing ML models in simulations for the dynamics, interactions, and
 computing quantities of interest (QoI) characterizing the system state.  The
 package makes use of standardized data formats such as XML for inputs and
-export ML model formats from machine learning frameworks.](fig/mlmod_schematic3.png){ width=75% }
+export ML model formats from machine learning frameworks.](fig/mlmod_schematic3.png){ width=65% }
 
 The ``MLMOD`` Package is
 incorporated into a simulation by either using the LAMMPS scripting language or
