@@ -41,7 +41,7 @@ environment arising from the type of solution, charge, and other physical
 conditions.  There is extensive theoretical literature on colloidal
 interactions and approximate models [@Derjaguin:1941; @Doi:2013; @Jones:2002].
 While analytic approaches have had success, there are many settings where
-challenges remain which limit the accuracy [@Jones:2002; @Atzberger:2018].
+challenges remain which limit the accuracy [@Jones:2002; @Atzberger:2018b].
 Computational modeling and simulation provides opportunities for capturing
 phenomena in more physical detail and with better understanding of contributing
 effects.
