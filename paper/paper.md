@@ -53,6 +53,7 @@ interactions.  Colloid coarse-grained models are sought which utilize
 separation in scales, such as the contrast in size with the solvent and
 dynamical time-scales.  In these circumstances, coarse-grained models aim to
 capture the effective colloidal interactions and their dynamics.
+
 ![Data-driven Modeling.](fig/data_driven_modeling2.png){ width=60% }
 
 <p align="left">
@@ -144,7 +145,7 @@ The package is controlled by external XML files that specify the mode of
 operation and source for pre-trained models and other information, see the
 schematic in Figure 2.
 
-![MLMOD Package Structure.](fig/mlmod_schematic3.png){ width=60% }
+![MLMOD Package Structure.](fig/mlmod_schematic3.png){ width=50% }
 
 <p align="left">
 <em>
