@@ -15,9 +15,29 @@ date: 4 May 2023
 bibliography: paper.bib
 ---
 
+
 # Summary
 
-``MLMOD`` is a software package for incorporating machine learning approaches and models into simulations of microscale mechanics and molecular dynamics in LAMMPS. Recent machine learning approaches provide promising data-driven approaches for learning representations for system behaviors from experimental data and high fidelity simulations.  The package faciliates learning and using data-driven models for (i) dynamics of the system at larger spatial-temporal scales (ii) interactions between system components, (iii) features yielding coarser degrees of freedom, and (iv) features for new quantities of interest characterizing system behaviors.  ``MLMOD`` provides hooks in LAMMPS for (i) modeling dynamics and time-step integration, (ii) modeling interactions, and (iii) computing quantities of interest characterizing system states. The package allows for use of machine learning methods with general model classes including Neural Networks, Gaussian Process Regression, Kernel Models, and other approaches.  Here we discuss our prototype C++/Python package, aims, and example usage.  The package is integrated with the mesocale and molecular dynamics simulation package LAMMPS.  The source code for this initial version 1.0 of ``MLMOD`` has been archived to Zenodo with the linked DOI: [@zenodo].  For related papers, examples, updates, and additional information see http://atzberger.org/.
+``MLMOD`` is a software package for incorporating machine learning approaches
+and models into simulations of microscale mechanics and molecular dynamics in
+LAMMPS. Recent machine learning approaches provide promising data-driven
+approaches for learning representations for system behaviors from experimental
+data and high fidelity simulations.  The package faciliates learning and using
+data-driven models for (i) dynamics of the system at larger spatial-temporal
+scales (ii) interactions between system components, (iii) features yielding
+coarser degrees of freedom, and (iv) features for new quantities of interest
+characterizing system behaviors.  ``MLMOD`` provides hooks in LAMMPS for (i)
+modeling dynamics and time-step integration, (ii) modeling interactions, and
+(iii) computing quantities of interest characterizing system states. The
+package allows for use of machine learning methods with general model classes
+including Neural Networks, Gaussian Process Regression, Kernel Models, and
+other approaches.  Here we discuss our prototype C++/Python package, aims, and
+example usage.  The package is integrated currently with the mesocale and
+molecular dynamics simulation package LAMMPS and PyTorch.  The source code for
+this initial version 1.0.0 of ``MLMOD`` has been archived to Zenodo with a DOI
+in [@zenodo].  For related papers, examples, updates, and additional
+information see <https://github.com/atzberg/mlmod> and 
+<http://atzberger.org/>.
 
 # Statement of Need
 
@@ -27,9 +47,9 @@ A practical challenge in using machine learning methods for simulations is the e
 
 Recent advances in machine learning, optimization, and available computational
 resources are presenting new opportunities for data-driven modeling and
-simulation in the natural sciences and engineering.  Empirical successes in deep learning suggest promising non-linear techniques for learning representations for system behaviors and other underlying features [@Hinton:2006; @Goodfellow:2016].  Many previous deep learning methods have been developed for problems motivated by image analysis and natural language processing.  However, scientific computations and associated dynamical systems present a unique set of challenges for developing and employing recent machine learning approaches [@Atzberger:2018, @Brunton:2016, @Schmidt:2009].  
+simulation in the natural sciences and engineering.  Empirical successes in deep learning suggest promising non-linear techniques for learning representations for system behaviors and other underlying features [@Hinton:2006; @Goodfellow:2016].  Many previous deep learning methods have been developed for problems motivated by image analysis and natural language processing.  However, scientific computations and associated dynamical systems present a unique set of challenges for developing and employing recent machine learning approaches [@Atzberger:2018;@Brunton:2016;@Schmidt:2009].  
 
-In scientific and engineering applications there are often important constraints arising from physical principles required to obtain plausible models and there is a need for results to be more interpretable.  In large-scale scientific computations, bottom-up modeling efforts aim to start as close as possible to first principles and perform computations to obtain insights into larger-scale emergent behaviors.  Examples include the rheological responses of soft materials and complex fluids from microstructure interactions [@Atzberger:2013, @Bird:1987b, @Lubensky:1997, @Kimura:2009], molecular dynamics modeling of protein structures and functional domains from atomic level interactions [@Mccammon:1988; @Karplus:2002; @Karplus:1983; @Plimpton:1995], and prediction of weather and climate phenomena from detailed physical models, sensor data, and other measurements [@Richardson:2007; @Bauer:2015].  Obtaining observables and quantities of interest (QoI) from simulations of such high fidelity detailed models can involve significant computational resources [@Lusk:2011; @Sanbonmatsu:2007; @Washington:2009; @Pan:2021; @Murr:2016; @Giessen:2020].  Data-driven learning methods present opportunities to formulate more simplified models, provide model flexibility to accomodate subtle effects, or make predictions which are less computationally expensive.
+In scientific and engineering applications there are often important constraints arising from physical principles required to obtain plausible models and there is a need for results to be more interpretable.  In large-scale scientific computations, bottom-up modeling efforts aim to start as close as possible to first principles and perform computations to obtain insights into larger-scale emergent behaviors.  Examples include the rheological responses of soft materials and complex fluids from microstructure interactions [@Atzberger:2013; @Bird:1987; @Lubensky:1997; @Kimura:2009], molecular dynamics modeling of protein structures and functional domains from atomic level interactions [@Mccammon:1988; @Karplus:2002; @Karplus:1983; @Plimpton:1995], and prediction of weather and climate phenomena from detailed physical models, sensor data, and other measurements [@Richardson:2007; @Bauer:2015].  Obtaining observables and quantities of interest (QoI) from simulations of such high fidelity detailed models can involve significant computational resources [@Lusk:2011; @Sanbonmatsu:2007; @Washington:2009; @Pan:2021; @Murr:2016; @Giessen:2020].  Data-driven learning methods present opportunities to formulate more simplified models, provide model flexibility to accomodate subtle effects, or make predictions which are less computationally expensive.
 
 Data-driven modeling can take many forms.  As a specific motivation for the
 package and our initial implementations, we discuss a specific case
@@ -86,7 +106,7 @@ machine learning methods this is accomplished by using a class of
 representations and by training with data to identify models from this class.
 For making predictions in unobserved cases, this allows for interpolation, and
 in some cases even extrapolation, especially when using explicit low
-dimensional latent spaces or when imposing other inductive biases [@Atzberger:2023, @Atzberger:2022].
+dimensional latent spaces or when imposing other inductive biases [@Atzberger:2023; @Atzberger:2022].
 For example, consider the colloidal example in the simiplified case when we
 assume the interactions can be approximated as pairwise.  The problem reduces
 to a model $M = M(\mathbf{X}_1,\mathbf{X}_2)$ depending on six dimensions.
@@ -110,7 +130,7 @@ convenience to train an ML model to provide a compressed representation and for
 interpolation for evaluating $M(\mathbf{X})$.  
 
 Machine learning methods also could be used to train more directly from
-simulation data for sampled colloid trajectories $\mathbf{X}(t)$ [@Atzberger:2023,Nielsen:2000].  The training
+simulation data for sampled colloid trajectories $\mathbf{X}(t)$ [@Atzberger:2023;Nielsen:2000].  The training
 would select an ML model $M_\theta$ over some class of models $H$ parameterized by $\theta$,
 such as the weights and biases of a Deep Neural Network.  For instance, this
 could be done by Maximum Likelihood Estimation (MLE) or other losses from the trajectory data
@@ -121,7 +141,7 @@ observing the trajectory data $\{\mathbf{X}(t_i)\}$.  To obtain tractable and
 robust training algorithms, further approximations and regularizations may be
 required to the MLE problem or alternatives used.  This could include
 using variational inference approaches, further restrictions on the model
-architectures, priors, or other information [@Atzberger:2020; @Atzberger:2023, @Kingma:2014, @Blei:2017]. Combining such approximations with further regularizations also could help facilitate learning, including of possible symmetries and other features of trained models $M(\mathbf{X}) = M_\theta$.  
+architectures, priors, or other information [@Atzberger:2020; @Atzberger:2023; @Kingma:2014; @Blei:2017]. Combining such approximations with further regularizations also could help facilitate learning, including of possible symmetries and other features of trained models $M(\mathbf{X}) = M_\theta$.  
 
 The ``MLMOD`` package provides ways for transferring such learned models into practical simulations within LAMMPS.  We discussed here one example of a basic data-driven modeling approach for colloids.  The ``MLMOD`` package can be used more generally and supports broad classes of models for incorporating machine learning results into simulation components.  Components can include the dynamics, interactions, or computing quantities of interest.  The initial implementations we present supports the basic mobility modeling framework as a proof-of-concept, with longer-term aims to support more general classes of reduced dynamics and interactions in future releases.
 
@@ -210,11 +230,13 @@ with $r = \|\mathbf{r}\|$ give the particle separation.  The responses are
 $\mathbf{V} _{\ell} = M_{\ell m} \mathbf{F} _{m}$ 
 with $\ell,m \in \{1,2\}$ and summation notation. For different environments surrounding the colloids, these interactions would be learned from simulation data. 
 
-The ``dX_MF_ML1`` mode indicates this type of mobility model has interactions from learned ML models.  The ML models are given by the files ``M_ii_torch.pt`` and ``M_ij_torch.pt``.  Related modes can also be implemented to
-extend models to capture more complicated interactions or near-field effects.
-For example, to allow for localized many-body interactions with ML models
-giving contributions to mobility $M(\mathbf{X})$.  In this way ``MLMOD`` can be
-used for hybrid modeling combining ML models with more traditional modeling
+The ``dX_MF_ML1`` mode indicates this type of mobility model has interactions
+from learned ML models.  The ML models are given by the files ``M_ii_torch.pt``
+and ``M_ij_torch.pt``.  Related modes can also be implemented to extend models
+to capture more complicated interactions or near-field effects.  For example,
+to allow for localized many-body interactions with ML models giving
+contributions to mobility $M(\mathbf{X})$.  In this way ``MLMOD`` can be used
+for hybrid modeling combining ML models with more traditional modeling
 approaches within a unified framework.
 
 This gives one example, the ML interactions and integrators can be more general 
@@ -225,11 +247,12 @@ variety of models to be used ranging from those based on Deep Neural Networks,
 Kernel Regression Models, and others.  
 
 # Conclusion 
-The package provides capabilities in LAMMPS for incorporating into
+The package ```MLMOD``` provides capabilities in LAMMPS for incorporating into
 simulations data-driven models for dynamics and interactions obtained from
 training with machine learning methods.  We describe here our initial implementation. 
-For examples, updates, and additional information please check the
-``MLMOD`` Package website at http://atzberger.org/.
+For updates, examples, and additional information please see
+<https://github.com/atzberg/mlmod> and
+<http://atzberger.org/>.
 
 # Acknowledgements
 
@@ -240,4 +263,7 @@ CNS-1725797.  P.J.A. would also like to acknowledge a hardware grant from
 Nvidia.  
 
 # References
+
+
+
 
